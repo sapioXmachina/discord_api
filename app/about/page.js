@@ -2,8 +2,14 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+import Router from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogress
 
 export default function About() {
+  NProgress.start();
+  NProgress.done();
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -31,11 +37,11 @@ export default function About() {
       console.log(err);
     }
   };
-    
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-      
+
         <div><>
           <ul>
             <div className='flex'>
@@ -50,7 +56,7 @@ export default function About() {
           </ul>
           </>
         </div>
-      
+
         <h1>{process.env.NEXT_PUBLIC_API_APP}</h1>
         <h2>{process.env.NEXT_PUBLIC_API_PROJ}</h2>
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
@@ -94,10 +100,10 @@ export default function About() {
           <button className="text-center" type="submit">[ Send Message ]</button>
         </form>
       </div>
-      
+
       <div></div>
       <div></div>
-      
+
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <h1>{process.env.NEXT_PUBLIC_API_APP}</h1>
         <h2>{process.env.NEXT_PUBLIC_API_PROJ}</h2>
