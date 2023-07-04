@@ -1,36 +1,6 @@
-"use client";
-import React, { useState } from "react";
-import Image from 'next/image';
+import Image from 'next/image'
 
 export default function Home() {
-  const [message, setMessage] = useState("");
-  const discordMessage = "Message from sapioXmachina: ";
-
-  let handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let res = await fetch("https://www.hackercoop.dev/api/boop", {
-        body: JSON.stringify({
-          'content': discordMessage + message,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer HackerSummer2023"
-        },
-        method: "POST",
-      })
-
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setMessage("Message sent successfully!");
-      } else {
-        setMessage("Oops -- an error occured!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-    
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -60,23 +30,15 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-full text-center">
+      <div className="text-center">
         <h1 className="text-3xl text-left font-bold underline">Homework</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={message}
-            placeholder="Enter a message..."
-            onChange={(e) => setMessage(e.target.value)}
-          />
+        <form action="#" method="post">
+          <input type="text" id="message" name="message" placeholder=" Enter a message..." />
           <br />
-          <button className="text-center" type="submit">Send Message</button>
+          <button className="text-center" type="submit">&nbsp;Send Message&nbsp;</button>
         </form>
       </div>
-      
-      <div></div>
-      <div></div>
-      
+
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <h1>Discord API</h1>
         <h2>Hacker Coop | Summer 2023</h2>
@@ -104,5 +66,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+  )
 }
