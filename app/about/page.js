@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default function About() {
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
