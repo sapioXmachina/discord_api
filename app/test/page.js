@@ -5,18 +5,14 @@ import Link from 'next/link';
 
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogressq
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
 
 export default function Home() {
   NProgress.start();
   NProgress.done();
-
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -29,23 +25,24 @@ export default function Home() {
         }),
         headers: {
           "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
-          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
+          "Authorization": process.env.NEXT_PUBLIC_API_AUTH,
         },
         method: "POST",
       })
 
       let resJson = await res.json();
       if (res.status === 200) {
-        notify("Message sent successfully!");
+        setMessage("");
+        toast("Message sent successfully!");
       } else {
-        notify("Oops -- an error occured!");
+        setMessage(message);
+        toast("Oops -- something went wrong!");
       }
     } catch (err) {
       console.log(err);
+      setStatus(true);
     }
   };
-
-  const notify = () => toast("Wow so easy !");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -96,7 +93,7 @@ export default function Home() {
       </div>
 
       <div className="h-full text-center">
-        <h1 className="text-3xl text-left font-bold underline">Homework</h1>
+        <h1 className="text-3xl text-left font-bold underline">TEST</h1>
         <br />
         <form onSubmit={handleSubmit}>
           <input
@@ -109,8 +106,9 @@ export default function Home() {
             required
           />
           <br />
-          <button onClick={notify} className="text-center" type="submit">[ Send Message ]</button>
+          <button className="text-center" type="submit">[ Send Message ]</button>
         </form>
+        <ToastContainer />
       </div>
 
       <div></div>
