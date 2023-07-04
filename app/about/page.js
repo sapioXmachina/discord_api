@@ -3,10 +3,17 @@ import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Router from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogressq
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
+  NProgress.start();
+  NProgress.done();
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
