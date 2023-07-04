@@ -3,13 +3,6 @@ import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Router from 'next/router';
-import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogressq
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 export default function Home() {
   const notify = () => toast("Button was clicked!");
 
@@ -38,7 +31,6 @@ export default function Home() {
       }
     } catch (err) {
       console.log(err);
-      setStatus(true);
     }
   };
 
