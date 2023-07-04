@@ -62,15 +62,16 @@ export default function Home() {
 
       <div className="h-full text-center">
         <h1 className="text-3xl text-left font-bold underline">Homework</h1>
+        <br />
         <form onSubmit={handleSubmit}>
-          <input
+          <textarea
             type="text"
             value={message}
             placeholder="Enter a message..."
             onChange={(e) => setMessage(e.target.value)}
           />
-          <br />
-          <button className="text-center" type="submit">Send Message</button>
+          <br /><br />
+          <button className="text-center" type="submit">[ Send Message ]</button>
         </form>
       </div>
       
