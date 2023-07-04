@@ -7,12 +7,13 @@ import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogressq
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Home() {
   NProgress.start();
   NProgress.done();
-  
-  const [status, setStatus] = useState(false);
-  
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -32,15 +33,17 @@ export default function Home() {
 
       let resJson = await res.json();
       if (res.status === 200) {
-        setMessage("Message sent successfully!");
+        notify("Message sent successfully!");
       } else {
-        setMessage("Oops -- an error occured!");
+        notify("Oops -- an error occured!");
       }
     } catch (err) {
       console.log(err);
       setStatus(true);
     }
   };
+
+  const notify = () => toast("Wow so easy !");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -104,7 +107,7 @@ export default function Home() {
             required
           />
           <br />
-          <button className="text-center" type="submit">[ Send Message ]</button>
+          <button onClick={notify} className="text-center" type="submit">[ Send Message ]</button>
         </form>
       </div>
 

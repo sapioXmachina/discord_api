@@ -9,7 +9,7 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 export default function About() {
   NProgress.start();
   NProgress.done();
-  
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
