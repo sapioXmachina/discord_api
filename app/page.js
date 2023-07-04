@@ -70,7 +70,7 @@ export default function Home() {
             placeholder="Enter a message..."
             onChange={(e) => setMessage(e.target.value)}
           />
-          <br /><br />
+          <br />
           <button className="text-center" type="submit">[ Send Message ]</button>
         </form>
       </div>
