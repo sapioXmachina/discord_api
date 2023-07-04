@@ -4,18 +4,18 @@ import Image from 'next/image';
 
 export default function Home() {
   const [message, setMessage] = useState("");
-  const discordMessage = "Message from sapioXmachina: ";
+  const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("https://www.hackercoop.dev/api/boop", {
+      let res = await fetch(process.env.NEXT_PUBLIC_API_URL, {
         body: JSON.stringify({
           'content': discordMessage + message,
         }),
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer HackerSummer2023"
+          "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
+          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
         },
         method: "POST",
       })
@@ -34,11 +34,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <h1>Discord API</h1>
-        <h2>Hacker Coop | Summer 2023</h2>
+        <h1>{process.env.NEXT_PUBLIC_API_APP}</h1>
+        <h2>{process.env.NEXT_PUBLIC_API_PROJ}</h2>
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Github :&nbsp;
-          <code className="font-mono font-bold">@sapioXmachina</code>
+          <code className="font-mono font-bold">{process.env.NEXT_PUBLIC_API_GITHUB}</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
@@ -79,11 +79,11 @@ export default function Home() {
       <div></div>
       
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <h1>Discord API</h1>
-        <h2>Hacker Coop | Summer 2023</h2>
+        <h1>{process.env.NEXT_PUBLIC_API_APP}</h1>
+        <h2>{process.env.NEXT_PUBLIC_API_PROJ}</h2>
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Github :&nbsp;
-          <code className="font-mono font-bold">@sapioXmachina</code>
+          <code className="font-mono font-bold">{process.env.NEXT_PUBLIC_API_GITHUB}</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
