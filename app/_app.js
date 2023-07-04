@@ -9,9 +9,6 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-    NProgress.start();
-    NProgress.done();
-
     return <Component {...pageProps} />
 }
 export default MyApp;
