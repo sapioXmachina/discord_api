@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogress
+import 'nprogress/nprogress.css'; //styles of nprogressq
 
 export default function Home() {
   NProgress.start();
@@ -54,6 +54,10 @@ export default function Home() {
               &nbsp;|&nbsp;
               <Link href="/about">
                 About
+              </Link>
+              &nbsp;|&nbsp;
+              <Link href="/test">
+                Test
               </Link>
             </div>
           </ul>

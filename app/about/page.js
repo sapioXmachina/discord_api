@@ -52,6 +52,10 @@ export default function About() {
               <Link href="/about">
                 About
               </Link>
+              &nbsp;|&nbsp;
+              <Link href="/test">
+                Test
+              </Link>
             </div>
           </ul>
           </>
