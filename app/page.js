@@ -13,7 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
   NProgress.start();
   NProgress.done();
-
+  
+  const notify = () => toast("Button was clicked!");
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -39,11 +41,8 @@ export default function Home() {
       }
     } catch (err) {
       console.log(err);
-      setStatus(true);
     }
   };
-
-  const notify = () => toast("Wow so easy !");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

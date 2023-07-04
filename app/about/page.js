@@ -2,14 +2,20 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogress
+import 'nprogress/nprogress.css'; //styles of nprogressq
 
-export default function About() {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export default function Home() {
   NProgress.start();
   NProgress.done();
-
+  
+  const notify = () => toast("Button was clicked!");
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -29,9 +35,9 @@ export default function About() {
 
       let resJson = await res.json();
       if (res.status === 200) {
-        setMessage("Message sent successfully!");
+        notify("Message sent successfully!");
       } else {
-        setMessage("Oops -- an error occured!");
+        notify("Oops -- an error occured!");
       }
     } catch (err) {
       console.log(err);
@@ -41,7 +47,6 @@ export default function About() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-
         <div><>
           <ul>
             <div className='flex'>
@@ -101,7 +106,7 @@ export default function About() {
             required
           />
           <br />
-          <button className="text-center" type="submit">[ Send Message ]</button>
+          <button onClick={notify} className="text-center" type="submit">[ Send Message ]</button>
         </form>
       </div>
 
