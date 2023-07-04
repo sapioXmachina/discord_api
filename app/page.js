@@ -64,11 +64,14 @@ export default function Home() {
         <h1 className="text-3xl text-left font-bold underline">Homework</h1>
         <br />
         <form onSubmit={handleSubmit}>
-          <textarea
+          <input
             type="text"
-            value={message}
+            pattern="[\w\d\s]{1,140}"
+            title="Should be only letters or numbers."
             placeholder="Enter a message..."
+            value={message}
             onChange={(e) => setMessage(e.target.value)}
+            required
           />
           <br />
           <button className="text-center" type="submit">[ Send Message ]</button>
