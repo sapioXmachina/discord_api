@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
-import FlashMessage from "react-flash-message";
 
 export default function Home() {
   NProgress.start();
@@ -45,7 +45,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-
         <div><>
           <ul>
             <div className='flex'>
@@ -102,11 +101,6 @@ export default function Home() {
           />
           <br />
           <button className="text-center" type="submit">[ Send Message ]</button>
-          {status && (
-            <FlashMessage duration={5000}>
-              <strong>I will disapper in 5 seconds!</strong>
-            </FlashMessage>
-          )}
         </form>
       </div>
 
