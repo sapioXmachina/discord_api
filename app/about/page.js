@@ -8,10 +8,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import NProgress from 'nprogress';
 NProgress.configure({ easing: 'ease', speed: 1000 });
 
-export default function Home() {
+export default function About() {
   NProgress.start();
   NProgress.done();
-  
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -95,8 +95,9 @@ export default function Home() {
         <h1 className="text-3xl text-left font-bold underline">ABOUT</h1>
         <br />
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
+          <textarea
+            rows="3"
+            type="textarea"
             pattern="[\w\d\s]{1,140}"
             title="Should be only letters or numbers."
             placeholder="Enter a message..."
