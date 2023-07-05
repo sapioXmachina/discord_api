@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, setStatus } from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -38,7 +38,7 @@ export default function Home() {
       }
     } catch (err) {
       console.log(err);
-      setStatus(true);
+      // setStatus(true);
     }
   };
 
