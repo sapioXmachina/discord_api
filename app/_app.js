@@ -1,6 +1,6 @@
 // _app.js
 import Router from 'next/router';
-import NProgress from 'NProgress';
+import NProgress from './nprogress.js';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
