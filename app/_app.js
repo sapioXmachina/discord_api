@@ -9,9 +9,9 @@ NProgress.configure({
 });
 
 //Route Events
-Router.events.on('routeChangeStart', () => NProgress.set(0.3));
-Router.events.on('routeChangeComplete', () => NProgress.set(1.0));
-Router.events.on('routeChangeError', () => NProgress.set(1.0));
+Router.events.on('routeChangeStart', () => NProgress.start);
+Router.events.on('routeChangeComplete', () => NProgress.done);
+Router.events.on('routeChangeError', () => NProgress.done);
 
 function MyApp({ Component, pageProps }) {
   const {route} = useRouter();
