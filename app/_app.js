@@ -1,35 +1,19 @@
 // app_.js
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import NProgress from 'nprogress';
-import "nprogress/nprogress.css";
-import Router from 'next/router';
 
-NProgress.configure({
-  minimum: 0.3,
-  easing: 'ease',
-  speed: 800,
-  showSpinner: false,
-});
+function MyApp({ Component, pageProps }) {
 
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
+  const router = useRouter();
 
-export default function () {
-    return null;
+  useEffect(() => {
+    router.events.on('routeChangeStart', () =>  NProgress.start());
+    router.events.on('routeChangeComplete', () =>  NProgress.done());
+    router.events.on('routeChangeError', () =>  NProgress.done());
+  }, []);
+ 
+  return  <Component {...pageProps} />
 }
-
-// import NProgress from "nprogress";
-// import Router, { useRouter } from "next/router";
-
-// Router.onRouteChangeStart = url => { NProgress.start() };
-// Router.onRouteChangeComplete = () => NProgress.done();
-// Router.onRouteChangeError = () => NProgress.done();
-
-// function MyApp({ Component, pageProps }) {
-//   const {route} = useRouter();
-//   return (
-//     <Component {...pageProps} key={route} />
-//   );
-// }
-// export default MyApp;
+export default MyApp;
