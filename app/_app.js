@@ -3,11 +3,6 @@ import { useState , useEffect} from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 
-//Route Events
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
-
 function MyApp({ Component, pageProps }) {
   /**@type {[{target:HTMLDivElement},Dispatch<setStateAction<{target:HTMLDivElement}>>]}*/
   const [option,setOption] = useState({target:null})
