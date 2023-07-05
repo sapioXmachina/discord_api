@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
     Router.events.on("routeChangeError", (url) =>{
       Nprogress.done(false)
     }); 
-  }, [Router]);
+  }, []);
 
   return (
     <>
