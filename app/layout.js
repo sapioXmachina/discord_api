@@ -1,7 +1,5 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import './page-loader.css'; //styles of nprogress
-// import "nprogress/nprogress.css";
 
 import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
 
@@ -13,7 +11,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
+
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>

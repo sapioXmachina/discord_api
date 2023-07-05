@@ -1,22 +1,14 @@
 // _app.js
-import Router, { useRouter } from 'next/router';
-import NProgress from 'nprogress';
+import Router from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogress
 
-NProgress.configure({
-  minimum: 0.3,
-  easing: 'ease',
-  speed: 500,
-});
-
-//Route Events
-Router.events.on('routeChangeStart', () => NProgress.start);
-Router.events.on('routeChangeComplete', () => NProgress.done);
-Router.events.on('routeChangeError', () => NProgress.done);
+//Route Events.
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  const {route} = useRouter();
-  return (
-    <Component {...pageProps} key={route} />
-  );
+  return <Component {...pageProps} />
 }
 export default MyApp;

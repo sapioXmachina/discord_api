@@ -5,12 +5,12 @@ import Link from 'next/link';
 
 import { ToastContainer, toast } from 'react-toastify';
 
-import NProgress from 'nprogress';
+import NProgress from 'nprogress'; //nprogress module
 
 export default function Home() {
   NProgress.start();
   NProgress.done();
-
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -112,7 +112,7 @@ export default function Home() {
 
       <div></div>
       <div></div>
-      
+
     </main>
   );
 }
