@@ -3,19 +3,10 @@ import { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Router from 'next/router';
-import NProgress from 'nprogress'; //nprogress module
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
 
-export default function Home() {
-  NProgress.start();
-  NProgress.done();
-
+export default function About() {
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -116,7 +107,7 @@ export default function Home() {
 
       <div></div>
       <div></div>
-
+      
     </main>
   );
 }

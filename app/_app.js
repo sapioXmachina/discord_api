@@ -1,5 +1,4 @@
 // _app.js
-import { useState , useEffect} from 'react';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 
