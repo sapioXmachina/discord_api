@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 
 import NProgress from 'nprogress';
-NProgress.configure({ easing: 'ease', speed: 1000 });
 
 export default function Home() {
   NProgress.start();
