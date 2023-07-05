@@ -1,5 +1,4 @@
 // _app.js
-"use client";
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 
