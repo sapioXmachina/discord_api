@@ -5,12 +5,7 @@ import Link from 'next/link';
 
 import { ToastContainer, toast } from 'react-toastify';
 
-import NProgress from 'nprogress';
-
 export default function Home() {
-  NProgress.start();
-  NProgress.done();
-  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
@@ -49,15 +44,7 @@ export default function Home() {
           <ul>
             <div className='flex'>
               <Link href="/">
-                &gt;&gt;&nbsp;
-              </Link>
-              &nbsp;
-              <Link href="/about">
-                About
-              </Link>
-              &nbsp;|&nbsp;
-              <Link href="/test">
-                Test
+                &gt;&gt;&nbsp;Refresh
               </Link>
             </div>
           </ul>
