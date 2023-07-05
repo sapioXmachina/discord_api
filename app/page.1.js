@@ -8,6 +8,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import NProgress from 'nprogress'; //nprogress module
 
 export default function Home() {
+  NProgress.start();
+  NProgress.done();
+  
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
