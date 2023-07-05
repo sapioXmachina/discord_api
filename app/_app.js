@@ -15,7 +15,9 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setOption({
       target:window.document.getElementById("__next" )
-    }), []});
+    }),
+    []
+  });
 
   Router.events.on('routeChangeStart', () => NProgress.set(0.3));
   Router.events.on('routeChangeComplete', () => NProgress.set(1.0));
