@@ -7,10 +7,10 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import NProgress from 'nprogress';
 
-export default function Home() {
+export default function Test() {
   NProgress.start();
   NProgress.done();
-  
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
