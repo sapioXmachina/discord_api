@@ -1,27 +1,30 @@
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import Loader from './loader.js';
+
+import Loader from './loader';
+import NProgress from 'nprogress';
 
 function MyApp({ Component, pageProps }) {
-  import NProgress from 'nprogress';
-  
+  const [isLoading] = useState(false);
+  const {router} = useRouter();
+
   useEffect(() => {
     Router.events.on("routeChangeStart", (url)=>{
-      Nprogress.start()
+      NProgress.start();
     });
     Router.events.on("routeChangeComplete", (url)=>{
-      Nprogress.done(false)
+      NProgress.done(false);
     });
-  
+
     Router.events.on("routeChangeError", (url) =>{
-      Nprogress.done(false)
-    }); 
+      NProgress.done(false);
+    });
   }, []);
 
   return (
     <>
       {isLoading && <Loader/>}
-      <Component {...pageProps} />
+      <Component {...pageProps} key={router} />
     </>
   )
 }
@@ -30,11 +33,10 @@ export default MyApp
 
 // import Router from 'next/router';
 // import NProgress from 'nprogress'; //nprogress module
-// import 'nprogress/nprogress.css'; //styles of nprogress
 
-// //Route Events. 
-// Router.events.on('routeChangeStart', () => NProgress.start()); 
-// Router.events.on('routeChangeComplete', () => NProgress.done()); 
+// //Route Events
+// Router.events.on('routeChangeStart', () => NProgress.start());
+// Router.events.on('routeChangeComplete', () => NProgress.done());
 // Router.events.on('routeChangeError', () => NProgress.done());
 
 // function MyApp({ Component, pageProps }) {
