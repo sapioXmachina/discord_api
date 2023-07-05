@@ -15,9 +15,8 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setOption({
       target:window.document.getElementById("__next" )
-    }),
-    []
-  });
+    })
+  }, []); // This is not safe (it calls `setOption` which uses `someProp`)
 
   Router.events.on('routeChangeStart', () => NProgress.set(0.3));
   Router.events.on('routeChangeComplete', () => NProgress.set(1.0));
