@@ -90,8 +90,9 @@ export default function Home() {
         <h1 className="text-3xl text-left font-bold underline">Homework</h1>
         <br />
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
+          <textarea
+            rows="3"
+            type="textarea"
             pattern="[\w\d\s]{1,140}"
             title="Should be only letters or numbers."
             placeholder="Enter a message..."
