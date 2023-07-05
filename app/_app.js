@@ -1,6 +1,6 @@
 // _app.js
 import Router, { useRouter } from 'next/router';
-import NProgress from 'nprogress'; //nprogress module
+import NProgress from 'nprogress';
 
 //Route Events
 Router.events.on('routeChangeStart', () => NProgress.set(0.3));

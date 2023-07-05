@@ -4,9 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
+
+import NProgress from 'nprogress';
+NProgress.configure({ easing: 'ease', speed: 1000 });
 
 export default function Home() {
+  NProgress.start();
+  NProgress.done();
+
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
 
