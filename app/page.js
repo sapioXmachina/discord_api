@@ -1,7 +1,6 @@
 // home page
 "use client";
-import App from './_app';
-import { useState } from "react";
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
