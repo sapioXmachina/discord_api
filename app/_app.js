@@ -1,10 +1,9 @@
-import Router from 'next/router'
+import Router from 'next/router';
 import { useState, useEffect } from 'react';
-import NProgress from 'nprogress'
 import Loader from './loader.js';
 
 function MyApp({ Component, pageProps }) {
-  const [isLoading, setIsLoading] = useState(false);
+  import NProgress from 'nprogress';
   
   useEffect(() => {
     Router.events.on("routeChangeStart", (url)=>{

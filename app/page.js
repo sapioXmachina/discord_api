@@ -23,7 +23,7 @@ export default function Home() {
         }),
         headers: {
           "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
-          "Authorization": process.env.NEXT_PUBLIC_API_AUTH,
+          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
         },
         method: "POST",
       });
@@ -68,7 +68,9 @@ export default function Home() {
         <h2>{process.env.NEXT_PUBLIC_API_PROJ}</h2>
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Github :&nbsp;
-          <a target="_blank" href={process.env.NEXT_PUBLIC_GIT_URL}><code className="font-mono font-bold">{process.env.NEXT_PUBLIC_API_GITHUB}</code></a>
+          <Link target="_blank" href={process.env.NEXT_PUBLIC_GIT_URL}>
+            <code className="font-mono font-bold">{process.env.NEXT_PUBLIC_GIT_HUB}</code>
+          </Link>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
