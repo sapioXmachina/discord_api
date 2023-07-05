@@ -1,4 +1,5 @@
 // _app.js
+"use client";
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 
@@ -15,7 +16,6 @@ Router.events.on('routeChangeError', () => NProgress.set(1.0));
 
 function MyApp({ Component, pageProps }) {
   const {route} = useRouter();
-
   return (
     <Component {...pageProps} key={route} />
   );
