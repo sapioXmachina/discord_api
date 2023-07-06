@@ -1,7 +1,7 @@
 // layout.js
 import './globals.css';
-import './nprogress.css'; //styles of nprogress
-// import 'nprogress/nprogress.css'; //styles of nprogress
+// import './nprogress.css'; //custom styles of nprogress
+import 'nprogress/nprogress.css'; //styles of nprogress
 import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
 import { Inter } from 'next/font/google';
 
