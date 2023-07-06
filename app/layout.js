@@ -2,7 +2,7 @@
 import './globals.css';
 // import './nprogress.css'; //custom styles of nprogress
 import 'nprogress/nprogress.css'; //styles of nprogress
-import 'bootstrap/dist/css/bootstrap.css' //stules of bootstrap
+import 'bootstrap/dist/css/bootstrap.css'; //stules of bootstrap
 import 'react-toastify/dist/ReactToastify.css'; //styles of toastify
 import { Inter } from 'next/font/google';
 
