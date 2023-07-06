@@ -101,7 +101,7 @@ export default function Home() {
           <textarea
             rows="3"
             type="textarea"
-            pattern="[\w\d\s]{1,140}"
+            pattern={process.env.NEXT_PUBLIC_API_REGEX}
             title="Should be only letters or numbers."
             placeholder="Enter a message..."
             value={message}
