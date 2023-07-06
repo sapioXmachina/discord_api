@@ -1,6 +1,5 @@
 // layout.js
 import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 import './globals.css';
 import 'nprogress/nprogress.css'; //styles of nprogress
 
