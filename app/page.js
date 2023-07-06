@@ -1,9 +1,8 @@
 // home page
 "use client";
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import 'bootstrap/dist/css/bootstrap.css' //stules of bootstrap
+import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -47,26 +46,52 @@ export default function Page() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between">
+    <div className="flex min-h-screen flex-col bg-dark-subtle items-center text-center justify-between">
       <nav className="fixed-top p-2 bg-dark text-center">
-        <p className="text-light">New Homework Form</p>
+        <span className="text-light">
+          New Homework Form
+        </span>
+        <br />
+        <div className="flex">
+        <Link href="/" className="text-decoration-none">
+          &gt;&gt;
+        </Link><br />
+        &nbsp;|&nbsp;
+        <Link href="/test" className="text-decoration-none">
+          Test
+        </Link>
+        </div>
       </nav>
       <div className="vh-100 d-flex justify-content-center align-items-center">
         <form>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+            <input
+              type="text"
+              className="form-control"
+              id="discord"
+              name="discord"
+              aria-describedby="discordHelp"
+              style={{height: 100, paddingBottom: 33 + "%"}}
+              minlength="1"
+              maxlength="140"
+              placeholder="Enter a message..."
+              pattern="^[\w\d\s\S\D\W]{1,140}"
+              title="Should be only letters or numbers."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
+            <div id="discordHelp" className="form-text text-body-seondary">
+              Only letters and spaces allowed.
+            </div>
           </div>
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" />
-          </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-            <label className="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          <button className="btn btn-primary" type="submit">Submit</button>
+          <button
+            className="btn btn-secondary"
+            type="submit"
+            onClick={handleSubmit}
+            >Send Message
+          </button>
+          <ToastContainer />
         </form>
       </div>
     </div>
