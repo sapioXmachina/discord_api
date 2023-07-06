@@ -1,4 +1,4 @@
-// home page
+// nprogress page
 "use client";
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -49,16 +49,16 @@ export default function Page() {
     <div className="flex min-h-screen flex-col bg-dark-subtle items-center text-center justify-between">
       <nav className="fixed-top p-2 bg-dark text-center">
         <span className="text-light">
-          Discord API Webhook
+          Discord API
         </span>
         <br />
         <div className="flex justify-between">
           <Link href="/" className="link-secondary text-decoration-none">
-            &gt;&gt;
+            Home
           </Link><br />
           &nbsp;|&nbsp;
           <Link href="/nprogress" className="link-secondary text-decoration-none">
-            NProgress
+            &lt;&lt;
           </Link>
         </div>
       </nav>
