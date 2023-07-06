@@ -20,7 +20,7 @@ export default function Page() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(process.env.NEXT_PUBLIC_API_, {
+      let res = await fetch(process.env.NEXT_PUBLIC_API_TEST, {
         body: JSON.stringify({
           'content': discordMessage + message,
         }),

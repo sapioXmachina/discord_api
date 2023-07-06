@@ -20,7 +20,7 @@ export default function Page() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(process.env.NEXT_PUBLIC_API_, {
+      let res = await fetch(process.env.NEXT_PUBLIC_API_TEST, {
         body: JSON.stringify({
           'content': discordMessage + message,
         }),
@@ -48,7 +48,7 @@ export default function Page() {
     <div className="flex min-h-screen flex-col bg-dark-subtle align-items-center text-center justify-between">
       <nav className="fixed-top p-2 bg-dark text-center">
         <span className="text-light">
-          Discord API Webhook
+          NProgress Bar & Spinner
         </span>
         <br />
         <div className="d-flex justify-content-center items-center">
