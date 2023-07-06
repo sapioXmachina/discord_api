@@ -41,18 +41,17 @@ export default function Page() {
       }
     } catch (err) {
       console.log(err);
-      // setStatus(true);
     }
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-dark-subtle items-center text-center justify-between">
+    <div className="flex min-h-screen flex-col bg-dark-subtle align-items-center text-center justify-between">
       <nav className="fixed-top p-2 bg-dark text-center">
         <span className="text-light">
           Discord API Webhook
         </span>
         <br />
-        <div className="flex justify-between">
+        <div className="d-flex justify-content-center items-center">
           <Link href="/" className="link-secondary text-decoration-none">
             &gt;&gt;
           </Link><br />
@@ -62,7 +61,7 @@ export default function Page() {
           </Link>
         </div>
       </nav>
-      <div className="vh-100 d-flex justify-content-center align-items-center">
+      <div className="vh-100 d-flex mt-14 pt-14">
         <form>
           <div className="mb-3">
             <input
@@ -71,9 +70,10 @@ export default function Page() {
               id="discord"
               name="discord"
               aria-describedby="discordHelp"
-              style={{height: 100, paddingBottom: 33 + "%"}}
-              minlength="1"
-              maxlength="140"
+              style={{height: 132, paddingBottom: 32 + "%"}}
+              size="32"
+              minLength="1"
+              maxLength="140"
               placeholder="Enter a message..."
               pattern="^[\w\d\s\S\D\W]{1,140}"
               title="Should be only letters or numbers."

@@ -1,4 +1,5 @@
 // layout.js
+import Head from 'next/head';
 import './globals.css';
 // import './nprogress.css'; //custom styles of nprogress
 import 'nprogress/nprogress.css'; //styles of nprogress
@@ -16,7 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <link rel='icon' href='/nextjs-icon.ico' />
+      </Head>
+        <body className={inter.className}>{children}</body>
     </html>
   );
 }
