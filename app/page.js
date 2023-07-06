@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import NProgress from 'nprogress';
 
-export default function Home() {
+export default function Page() {
   useEffect(() => {
     NProgress.start();
     NProgress.done();
@@ -16,7 +16,7 @@ export default function Home() {
   
   const [message, setMessage] = useState("");
   const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
-
+  
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -66,7 +66,7 @@ export default function Home() {
           </ul>
           </>
         </div>
-
+        
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           {process.env.NEXT_PUBLIC_APP_TITLE}
           &nbsp;| Github:&nbsp;
@@ -95,28 +95,44 @@ export default function Home() {
       </div>
 
       <div className="h-full text-center">
-        <h1 className="text-3xl text-left font-bold underline">Homework</h1>
+        <h1 className="text-4xl text-center font-bold underline">Homework</h1>
         <br />
-        <form onSubmit={handleSubmit}>
+        <form>
           <textarea
-            rows="3"
-            type="textarea"
-            pattern={process.env.NEXT_PUBLIC_API_REGEX}
-            title="Should be only letters or numbers."
+            id="discord"
+            name="discord"
+            size="56"
+            minlength="1"
+            maxlength="140"
             placeholder="Enter a message..."
+            pattern="^[\w\d\s\S\D\W]{1,140}"
+            title="Should be only letters or numbers."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
           />
-          <br />
-          <button className="text-center" type="submit">[ Send Message ]</button>
+          <br /><br />
+          <button
+            className="text-center"
+            type="submit"
+            onClick={handleSubmit}
+            >[ Send Message ]</button>
         </form>
         <ToastContainer />
       </div>
 
       <div></div>
       <div></div>
-
     </main>
   );
 }
+
+
+// function validateFormWithJS() {
+//     const discord = document.querySelector('#message').value;
+ 
+//     if (!discord) {
+//       alert('Please enter a message.');
+//       return false;
+//     }
+//   }

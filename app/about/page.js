@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import NProgress from 'nprogress';
 
-export default function About() {
+export default function Page() {
   useEffect(() => {
     NProgress.start();
     NProgress.done();
@@ -99,11 +99,14 @@ export default function About() {
         <br />
         <form onSubmit={handleSubmit}>
           <textarea
+            id="discord"
+            name="discord"
             rows="3"
-            type="textarea"
-            pattern="[\w\d\s]{1,140}"
-            title="Should be only letters or numbers."
+            minlength="1"
+            maxlength="140"
             placeholder="Enter a message..."
+            pattern="^[\w\d\s\S\D\W]{1,140}"
+            title="Should be only letters or numbers."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required

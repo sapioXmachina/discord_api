@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import NProgress from 'nprogress';
 
-export default function Test() {
+export default function Page() {
   useEffect(() => {
     NProgress.start();
     NProgress.done();
