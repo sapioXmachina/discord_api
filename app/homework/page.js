@@ -80,7 +80,8 @@ export default function Page() {
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
-            >Homework</p>
+            >Homework
+          </p>
           <hr className="hr" />
           <form>
             <div className="mb-3">
