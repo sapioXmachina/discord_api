@@ -6,7 +6,7 @@ import Link from 'next/link';
 import NProgress from 'nprogress';
 import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Page() {
@@ -22,23 +22,24 @@ export default function Page() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(process.env.NEXT_PUBLIC_API_URL, {
+      let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
         body: JSON.stringify({
           'content': discord,
         }),
         headers: {
-          "Content-Type": process.env.NEXT_PUBLIC_API_CONT
+          'Content-Type': process.env.NEXT_PUBLIC_API_CONT
         },
-        method: "POST",
+        method: 'POST',
       });
 
       let resJson = await res.json();
       if (res.status === 200) {
-        setMessage("");
-        toast("Message sent successfully!");
+        toast('Message sent successfully!');
+        setMessage('');
+        console.log(discord);
       } else {
+        toast('Oops -- something went wrong!');
         setMessage(message);
-        toast("Oops -- something went wrong!");
       }
     } catch (err) {
       console.log(err);
@@ -90,7 +91,7 @@ export default function Page() {
           <hr className="hr" />
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <input
+              <textarea
                 type="text"
                 id="discord"
                 name="discord"
@@ -98,12 +99,12 @@ export default function Page() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
-                style={{height: 132, paddingBottom: 25 + '%'}}
-                size="32"
+                rows="6"
+                cols="32"
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                pattern="^[\w\d\s\S\D\W]{1,140}"
+                pattern="\d"
                 title="Only letters and spaces allowed."
                 required
               />
