@@ -1,5 +1,5 @@
 // _app.js
-import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
+// import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect } from 'react';
 
 import Router from 'next/router';
@@ -13,13 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    import("bootstrap/dist/js/bootstrap");
-  }, []);
-  
   return (<>
-  <Component {...pageProps} />
-  <ToastContainer />
+    <Component {...pageProps} />
+    <ToastContainer />
   </>);
 }
 

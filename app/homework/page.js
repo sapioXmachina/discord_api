@@ -59,15 +59,17 @@ export default function Page() {
           </h4>
         </div>
         <div>
-          <h5 className="text-secondary-emphasis">Group 2</h5>
+          <h5 className="text-secondary-emphasis">
+            Group 2
+          </h5>
         </div>
         <div className="d-flex justify-content-center items-center">
           <Link href="/" className="link-secondary text-decoration-none">
-            [&nbsp;&nbsp;&lt;&gt;&nbsp;&nbsp;]
+            [&nbsp;Discord API&nbsp;]
           </Link>
           &nbsp;&nbsp;
           <Link href="/homework" className="link-secondary text-decoration-none">
-            [&nbsp;Homework&nbsp;]
+            [&nbsp;&nbsp;&lt;&gt;&nbsp;&nbsp;]
           </Link>
           &nbsp;&nbsp;
           <Link href="/nprogress" className="link-secondary text-decoration-none">
@@ -75,8 +77,8 @@ export default function Page() {
           </Link>
         </div>
       </nav>
-      <div className="vh-100 d-flex justify-content-center align-items-start">
-        <div className="card ps-3 pe-3 pt-2 pb-3 mt-3 bg-dark-subtle">
+      <div className="vh-100 d-flex justify-content-center align-items-start pt-6">
+        <div className="card ps-3 pe-3 pt-2 pb-2 mt-3 bg-dark-subtle">
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
@@ -91,7 +93,7 @@ export default function Page() {
                 id="discord"
                 name="discord"
                 aria-describedby="discordHelp"
-                style={{height: 132, paddingBottom: 32 + "%"}}
+                style={{height: 132, paddingBottom: 25 + "%"}}
                 size="32"
                 minLength="1"
                 maxLength="140"
