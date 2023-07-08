@@ -13,6 +13,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    NProgress.start();
+    NProgress.done();
+  }, []);
+  
   return (<>
     <Component {...pageProps} />
     <ToastContainer />
