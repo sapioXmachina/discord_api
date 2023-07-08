@@ -1,10 +1,13 @@
-// home page
+// homework page
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import NProgress from 'nprogress';
 import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
+
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Page() {
   useEffect(() => {
@@ -13,44 +16,33 @@ export default function Page() {
   }, []);
   
   const [message, setMessage] = useState('');
-  const messagePrefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
-  const discordMessage = messagePrefix  + message;
+  const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
+  const discord = prefix  + message;
   
   let handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const webhookUrl = process.env.NEXT_PUBLIC_API_TEST
-    
     try {
-      useEffect(() => {
-        NProgress.start();
-      }, []);
-      
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': process.env.NEXT_PUBLIC_API_CONT,
-          'Authorization': process.env.NEXT_PUBLIC_API_AUTH
-        },
+      let res = await fetch(process.env.NEXT_PUBLIC_API_URL, {
         body: JSON.stringify({
-          content: discordMessage,
-        })
+          'content': discord,
+        }),
+        headers: {
+          "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
+          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
+        },
+        method: "POST",
       });
-      
-      useEffect(() => {
-        NProgress.done();
-      }, []);
 
-      if (response.ok) {
-        toast.success('Discord message sent successfully!');
-        setMessage('');
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setMessage("");
+        toast("Message sent successfully!");
       } else {
-        toast.error('Oops -- something went wrong!');
         setMessage(message);
+        toast("Oops -- something went wrong!");
       }
-    } catch (error) {
-      console.error('An error occurred:', error);
-      toast.error('An error occurred. Please try again.');
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -90,14 +82,14 @@ export default function Page() {
         </div>
       </nav>
       <div className="vh-100 d-flex justify-content-center align-items-start pt-6">
-        <div className="card ps-3 pe-3 pt-2 pb-2 mt-3 bg-dark-subtle">
+        <div className="card ps-3 pe-3 pt-2 pb-3 mt-3 bg-dark-subtle">
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
             >Homework
           </p>
           <hr className="hr" />
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <input
                 type="text"
@@ -107,12 +99,12 @@ export default function Page() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
-                style={{height: 132, paddingBottom: 25 + "%"}}
+                style={{height: 132, paddingBottom: 25 + '%'}}
                 size="32"
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                pattern="^[\w\d\s\S\D\W]{1,140}"
+                // pattern="^[\w\d\s\S\D\W]{1,140}"
                 title="Only letters and spaces allowed."
                 required
               />
@@ -123,10 +115,10 @@ export default function Page() {
             <button
               type="submit"
               className="btn btn-secondary"
-              onClick={handleSubmit}
               >Send Message
             </button>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

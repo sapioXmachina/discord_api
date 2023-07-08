@@ -1,10 +1,13 @@
 // nprogress page
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import NProgress from 'nprogress';
 import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
+
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Page() {
   useEffect(() => {
@@ -12,19 +15,19 @@ export default function Page() {
     NProgress.done();
   }, []);
   
-  const [message, setMessage] = useState("");
-  const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
+  const [message, setMessage] = useState('');
+  const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
+  const discord = prefix  + message;
   
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(process.env.NEXT_PUBLIC_API_TEST, {
+      let res = await fetch(process.env.NEXT_PUBLIC_API_NONE, {
         body: JSON.stringify({
-          'content': discordMessage + message,
+          'content': discord,
         }),
         headers: {
-          "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
-          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
+          "Content-Type": process.env.NEXT_PUBLIC_API_CONT
         },
         method: "POST",
       });
@@ -59,7 +62,9 @@ export default function Page() {
           </h4>
         </div>
         <div>
-          <h5 className="text-secondary-emphasis">Group 2</h5>
+          <h5 className="text-secondary-emphasis">
+            Group 2
+          </h5>
         </div>
         <div className="d-flex justify-content-center items-center">
           <Link href="/" className="link-secondary text-decoration-none">
@@ -80,25 +85,26 @@ export default function Page() {
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
-            >NProgress</p>
+            >NProgress
+          </p>
           <hr className="hr" />
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <input
                 type="text"
-                className="form-control"
                 id="discord"
                 name="discord"
+                className="form-control"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
-                style={{height: 132, paddingBottom: 25 + "%"}}
+                style={{height: 132, paddingBottom: 25 + '%'}}
                 size="32"
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                pattern="^[\w\d\s\S\D\W]{1,140}"
-                title="Should be only letters or numbers."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                // pattern="^[\w\d\s\S\D\W]{1,140}"
+                title="Only letters and spaces allowed."
                 required
               />
               <div id="discordHelp" className="form-text text-body-seondary">
@@ -106,12 +112,12 @@ export default function Page() {
               </div>
             </div>
             <button
-              className="btn btn-secondary"
               type="submit"
-              onClick={handleSubmit}
+              className="btn btn-secondary"
               >Send Message
             </button>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

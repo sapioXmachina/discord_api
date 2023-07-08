@@ -5,12 +5,11 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 
+// import { ToastContainer, toast } from 'react-toastify';
+
 Router.events.on('routeChangeStart', NProgress.start());
 Router.events.on('routeChangeError', NProgress.done());
 Router.events.on('routeChangeComplete', NProgress.done());
-
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -20,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   
   return (<>
     <Component {...pageProps} />
-    <ToastContainer />
+    // <ToastContainer />
   </>);
 }
 
