@@ -1,5 +1,5 @@
 // home page
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -12,33 +12,45 @@ export default function Page() {
     NProgress.done();
   }, []);
   
-  const [message, setMessage] = useState("");
-  const discordMessage = process.env.NEXT_PUBLIC_API_MSG + " ";
+  const [message, setMessage] = useState('');
+  const messagePrefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
+  const discordMessage = messagePrefix  + message;
   
   let handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const webhookUrl = process.env.NEXT_PUBLIC_API_TEST
+    
     try {
-      let res = await fetch(process.env.NEXT_PUBLIC_API_TEST, {
-        body: JSON.stringify({
-          'content': discordMessage + message,
-        }),
+      useEffect(() => {
+        NProgress.start();
+      }, []);
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
         headers: {
-          "Content-Type": process.env.NEXT_PUBLIC_API_CONT,
-          "Authorization": process.env.NEXT_PUBLIC_API_AUTH
+          'Content-Type': process.env.NEXT_PUBLIC_API_CONT,
+          'Authorization': process.env.NEXT_PUBLIC_API_AUTH
         },
-        method: "POST",
+        body: JSON.stringify({
+          content: discordMessage,
+        })
       });
+      
+      useEffect(() => {
+        NProgress.done();
+      }, []);
 
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setMessage("");
-        toast("Message sent successfully!");
+      if (response.ok) {
+        toast.success('Discord message sent successfully!');
+        setMessage('');
       } else {
+        toast.error('Oops -- something went wrong!');
         setMessage(message);
-        toast("Oops -- something went wrong!");
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error('An error occurred:', error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -89,9 +101,11 @@ export default function Page() {
             <div className="mb-3">
               <input
                 type="text"
-                className="form-control"
                 id="discord"
                 name="discord"
+                className="form-control"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
                 style={{height: 132, paddingBottom: 25 + "%"}}
                 size="32"
@@ -99,9 +113,7 @@ export default function Page() {
                 maxLength="140"
                 placeholder="Enter a message..."
                 pattern="^[\w\d\s\S\D\W]{1,140}"
-                title="Should be only letters or numbers."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                title="Only letters and spaces allowed."
                 required
               />
               <div id="discordHelp" className="form-text text-body-seondary">
@@ -109,8 +121,8 @@ export default function Page() {
               </div>
             </div>
             <button
-              className="btn btn-secondary"
               type="submit"
+              className="btn btn-secondary"
               onClick={handleSubmit}
               >Send Message
             </button>
