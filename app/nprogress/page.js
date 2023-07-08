@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import NProgress from 'nprogress';
+import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 
 export default function Page() {
   useEffect(() => {
@@ -44,17 +45,33 @@ export default function Page() {
   return (
     <div className="flex min-h-screen flex-col bg-secondary align-items-center text-center justify-between">
       <nav className="sticky-top w-100 p-2 bg-dark text-center">
-        <span className="text-light">
-          NProgress Bar & Spinner
-        </span>
-        <br />
+        <div className="flex justify-content-center align-items-center">
+          <h4 className="text-secondary">
+            Summer
+          </h4>
+          &nbsp;&nbsp;
+          <h1 className="text-light">
+            HackerCoop
+          </h1>
+          &nbsp;&nbsp;
+          <h4 className="text-secondary">
+            2023
+          </h4>
+        </div>
+        <div>
+          <h5 className="text-secondary-emphasis">Group 2</h5>
+        </div>
         <div className="d-flex justify-content-center items-center">
           <Link href="/" className="link-secondary text-decoration-none">
-            Discord API
-          </Link><br />
-          &nbsp;|&nbsp;
+            [&nbsp;&nbsp;&lt;&gt;&nbsp;&nbsp;]
+          </Link>
+          &nbsp;&nbsp;
+          <Link href="/homework" className="link-secondary text-decoration-none">
+            [&nbsp;Homework&nbsp;]
+          </Link>
+          &nbsp;&nbsp;
           <Link href="/nprogress" className="link-secondary text-decoration-none">
-             &lt;&lt;
+            [&nbsp;NProgress&nbsp;]
           </Link>
         </div>
       </nav>
@@ -63,7 +80,7 @@ export default function Page() {
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
-            >Homework</p>
+            >NProgress</p>
           <hr className="hr" />
           <form>
             <div className="mb-3">
