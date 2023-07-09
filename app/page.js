@@ -1,27 +1,28 @@
 // page
 'use client';
 import { useEffect, useState } from 'react';
+
+import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 import Link from 'next/link';
 
 import NProgress from 'nprogress';
-import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
-
 // import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Page() {
   useEffect(() => {
     NProgress.start();
-    NProgress.done();
   }, []);
-  
+
   const [message, setMessage] = useState('');
   const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
   const discord = prefix  + message;
-  
+
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      NProgress.start();
+
       let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
         body: JSON.stringify({
           'content': discord,
@@ -32,19 +33,25 @@ export default function Page() {
         method: 'POST',
       });
 
+      NProgress.done();
+
       let resJson = await res.json();
       if (res.status === 200) {
-        toast('Message sent successfully!');
         setMessage('');
+        toast('Message sent successfully!');
         console.log(discord);
       } else {
-        toast('Oops -- something went wrong!');
         setMessage(message);
+        toast('Oops -- something went wrong!');
       }
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    NProgress.done();
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-secondary align-items-center text-center justify-between">
@@ -93,8 +100,8 @@ export default function Page() {
             <div className="mb-3">
               <textarea
                 type="text"
-                id="discord"
-                name="discord"
+                id="message"
+                name="message"
                 className="form-control"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -104,7 +111,7 @@ export default function Page() {
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                pattern="\d"
+                // pattern=""
                 title="Only letters and spaces allowed."
                 required
               />
@@ -112,10 +119,8 @@ export default function Page() {
                 Only letters and spaces allowed.
               </div>
             </div>
-            <button
-              type="submit"
-              className="btn btn-secondary"
-              >Send Message
+            <button type="submit" className="btn btn-secondary">
+              Send Message
             </button>
           </form>
           <ToastContainer />
