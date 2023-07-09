@@ -10,54 +10,39 @@ import NProgress from 'nprogress';
 // import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
+export const initialFormState = {
+  data: {
+    "Message from sapioXmachina": ""
+  },
+  error: {}
+};
+
 export default function Page() {
   useEffect(() => {
     NProgress.start();
   }, []);
-
-  // const [message, setMessage] = useState('');
-  // const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
-  // const discord = prefix  + message;
-
-  // let handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     NProgress.start();
-
-  //     let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
-  //       body: JSON.stringify({
-  //         'content': discord,
-  //       }),
-  //       headers: {
-  //         'Content-Type': process.env.NEXT_PUBLIC_API_CONT
-  //       },
-  //       method: 'POST',
-  //     });
-
-  //     NProgress.done();
-
-  //     let resJson = await res.json();
-  //     if (res.status === 200) {
-  //       setMessage('');
-  //       toast('Message sent successfully!');
-  //       console.log(discord);
-  //     } else {
-  //       setMessage(message);
-  //       toast('Oops -- something went wrong!');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   
-  const [formData, setFormData] = useState({
-    data: {
-      message: "",
-    },
-    error: {}
-  });
+  const [formData, setFormData] = useState(initialFormState);
   
-  const { send } = DiscordService();
+  const setDynamicFormData = (name, value) => {
+    setFormData({
+      data: {
+        ...formData.data,
+        [name]: value,
+      },
+      error: {}
+    });
+  };
+  
+  const { Send } = DiscordService(setFormData);
+  
+  const PostToDiscord = () => {
+    const description = Object.entries(formData.data)
+      .map((d) => `${d[0]}: ${d[1]}`)
+      .join("\n");
+    console.log(description);
+    Send(description);
+  };
   
   useEffect(() => {
     NProgress.done();
@@ -106,32 +91,32 @@ export default function Page() {
             >Discord API
           </p>
           <hr className="hr" />
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            PostToDiscord();
+          }}
+          >
             <div className="mb-3">
               <textarea
                 type="text"
-                id="message"
-                name="message"
                 className="form-control"
-                value={message}
+                name="Message from sapioXmachina"
+                value={formData.data.message}
                 onChange={(e) => {
                   const { name, value } = e.target;
-                  console.log(name, value)
+                  setDynamicFormData(name, value);
                 }}
-                  
-                // onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
                 rows="6"
                 cols="32"
                 minLength="1"
-                maxLength="2"
+                maxLength="140"
                 placeholder="Enter a message..."
-                // pattern=""
-                title="Only letters and spaces allowed."
+                title="Only letters, numbers, spaces and punctuation symbols allowed."
                 required
               />
               <div id="discordHelp" className="form-text text-body-seondary">
-                Only letters and spaces allowed.
+                Only letters, numbers, spaces and punctuation symbols allowed.
               </div>
             </div>
             <button type="submit" className="btn btn-secondary">
@@ -144,3 +129,38 @@ export default function Page() {
     </div>
   );
 }
+
+  // const [message, setMessage] = useState('');
+  // const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
+  // const discord = prefix  + message;
+
+  // let handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     NProgress.start();
+
+  //     let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
+  //       body: JSON.stringify({
+  //         'content': discord,
+  //       }),
+  //       headers: {
+  //         'Content-Type': process.env.NEXT_PUBLIC_API_CONT
+  //       },
+  //       method: 'POST',
+  //     });
+
+  //     NProgress.done();
+
+  //     let resJson = await res.json();
+  //     if (res.status === 200) {
+  //       setMessage('');
+  //       toast('Message sent successfully!');
+  //       console.log(discord);
+  //     } else {
+  //       setMessage(message);
+  //       toast('Oops -- something went wrong!');
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
