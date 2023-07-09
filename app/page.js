@@ -114,38 +114,3 @@ export default function Page() {
     </div>
   );
 }
-
-  // const [message, setMessage] = useState('');
-  // const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
-  // const discord = prefix  + message;
-
-  // let handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     NProgress.start();
-
-  //     let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
-  //       body: JSON.stringify({
-  //         'content': discord,
-  //       }),
-  //       headers: {
-  //         'Content-Type': process.env.NEXT_PUBLIC_API_CONT
-  //       },
-  //       method: 'POST',
-  //     });
-
-  //     NProgress.done();
-
-  //     let resJson = await res.json();
-  //     if (res.status === 200) {
-  //       setMessage('');
-  //       toast('Message sent successfully!');
-  //       console.log(discord);
-  //     } else {
-  //       setMessage(message);
-  //       toast('Oops -- something went wrong!');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
