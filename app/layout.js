@@ -1,7 +1,7 @@
 // layout.js
 import Head from 'next/head';
 // import './globals.css';
-import 'bootstrap/dist/css/bootstrap.css'; // Import bootstrap CSS
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'nprogress/nprogress.css';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,9 +23,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous"/>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
         <body>{children}<ToastContainer /></body>
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          crossorigin></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin></script>
+        <script>var Alert = ReactBootstrap.Alert;</script>
     </html>
   );
 }
