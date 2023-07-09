@@ -50,23 +50,13 @@ export default function Page() {
       <nav className="sticky-top w-100 p-2 bg-dark text-center">
         <div className="flex justify-content-center align-items-center">
           <h4 className="text-secondary">
-            Summer
+            Summer 2023
           </h4>
-          &nbsp;&nbsp;
-          <h1 className="text-light">
+          <h1 className="text-light pb-3">
             HackerCoop
           </h1>
-          &nbsp;&nbsp;
-          <h4 className="text-secondary">
-            2023
-          </h4>
         </div>
-        <div>
-          <h5 className="text-secondary-emphasis">
-            Group 2
-          </h5>
-        </div>
-        <div className="d-flex justify-content-center items-center">
+        <div className="d-flex justify-content-center items-center pb-3">
           <Link href="/" className="link-secondary text-decoration-none">
             [&nbsp;&nbsp;&lt;&gt;&nbsp;&nbsp;]
           </Link>
@@ -81,7 +71,7 @@ export default function Page() {
         </div>
       </nav>
       <div className="vh-100 d-flex justify-content-center align-items-start pt-6">
-        <div className="card ps-3 pe-3 pt-2 pb-3 mt-3 bg-dark-subtle">
+        <div className="card ps-3 pe-3 pt-2 pb-3 mt-5 bg-dark-subtle">
           <p
             className="fs-1 fw-bold text-left pt-4"
             style={{lineHeight: 0}}
