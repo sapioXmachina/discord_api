@@ -1,7 +1,7 @@
 // homework page
 'use client';
 import { useEffect, useState } from 'react';
-import DiscordService from "./DiscordServiceHw";
+import DiscordService from "./DiscordService";
 
 import Link from 'next/link';
 
