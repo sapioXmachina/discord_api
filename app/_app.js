@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 
+// import 'react-toastify/dist/ReactToastify.css';
 // import { ToastContainer, toast } from 'react-toastify';
 
 Router.events.on('routeChangeStart', NProgress.start());
