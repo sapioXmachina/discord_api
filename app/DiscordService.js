@@ -17,7 +17,7 @@ function DiscordService(setFormData) {
       NProgress.start();
       
       const data = await axios.post(
-        process.NEXT_PUBLIC_API_SAPIO,
+        process.env.NEXT_PUBLIC_API_SAPIO,
         body
       );
       setFormData(initialFormState);
@@ -27,8 +27,8 @@ function DiscordService(setFormData) {
       NProgress.done();
       
     } catch (error) {
-      console.error(error);
-      toast.error('Oops -- something went wrong!');
+      // console.error(error);
+      toast.error('Oops -- something went wrong! Webhook may no longer be active :(.');
     }
   };
 
