@@ -1,5 +1,5 @@
 // _app.js
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect } from 'react';
 
 import Router from 'next/router';
