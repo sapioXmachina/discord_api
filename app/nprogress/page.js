@@ -91,16 +91,18 @@ export default function Page() {
                   setDynamicFormData(name, value);
                 }}
                 aria-describedby="discordHelp"
-                rows="6"
-                cols="32"
+                rows="5"
+                cols="28"
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                title="Only letters, numbers, spaces and punctuation symbols allowed."
+                title="Letters, numbers, spaces and punctuation symbols allowed. Up to 140 characters."
                 required
               />
-              <div id="discordHelp" className="form-text text-body-seondary">
-                Only letters, numbers, spaces and punctuation symbols allowed.
+              <div id="discordHelp" className="mw-75 form-text text-wrap text-body-seondary">
+                Letters, numbers, spaces and<br />
+                punctuation symbols allowed.<br />
+                Up to 140 characters.
               </div>
             </div>
             <button type="submit" className="btn btn-secondary">

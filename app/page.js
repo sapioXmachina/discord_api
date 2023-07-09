@@ -96,11 +96,13 @@ export default function Page() {
                 minLength="1"
                 maxLength="140"
                 placeholder="Enter a message..."
-                title="Only letters, numbers, spaces and punctuation symbols allowed. Up to 140 characters."
+                title="Letters, numbers, spaces and punctuation symbols allowed. Up to 140 characters."
                 required
               />
-              <div id="discordHelp" className="form-text text-body-seondary">
-                Up to 140 characters
+              <div id="discordHelp" className="mw-75 form-text text-wrap text-body-seondary">
+                Letters, numbers, spaces and<br />
+                punctuation symbols allowed.<br />
+                Up to 140 characters.
               </div>
             </div>
             <button type="submit" className="btn btn-secondary">
