@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import DiscordService from "./DiscordService";
 
-import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 import Link from 'next/link';
 
 import NProgress from 'nprogress';

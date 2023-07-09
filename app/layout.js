@@ -1,7 +1,7 @@
 // layout.js
 import Head from 'next/head';
 // import './globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.css'; // Import bootstrap CSS
 import 'nprogress/nprogress.css';
 
 import 'react-toastify/dist/ReactToastify.css';
