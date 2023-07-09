@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 export const initialFormState = {
   data: {
-    "Message from sapioXmachina": ""
+    message: ""
   },
   error: {}
 };
@@ -28,7 +28,7 @@ export default function Page() {
     setFormData({
       data: {
         ...formData.data,
-        [name]: value,
+        message: value,
       },
       error: {}
     });
@@ -100,7 +100,7 @@ export default function Page() {
               <textarea
                 type="text"
                 className="form-control"
-                name="Message from sapioXmachina"
+                name="message"
                 value={formData.data.message}
                 onChange={(e) => {
                   const { name, value } = e.target;
