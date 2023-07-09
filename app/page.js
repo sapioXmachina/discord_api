@@ -37,7 +37,6 @@ export default function Page() {
     const description = Object.entries(formData.data)
       .map((d) => `${d[0]}: ${d[1]}`)
       .join("\n");
-    // console.log(description);
     Send(description);
   };
   

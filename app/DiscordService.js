@@ -20,7 +20,6 @@ function DiscordService(setFormData) {
         "https://discord.com/api/webhooks/1126411932103086120/8NKth6WdnNanjeflYKR4ITZpildJWogLYX9VEinSdJbMcNpegt3I_6XMUZBaSzI7VJys",
         body
       );
-      // console.log(data);
       setFormData(initialFormState);
       toast.success('Message sent successfully!');
       toast('Thanks for checking out my app! :)');
