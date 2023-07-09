@@ -7,8 +7,9 @@ import 'nprogress/nprogress.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify';
 
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+// import { Inter } from 'next/font/google';
+// const inter = Inter({ subsets: ['latin'] });
+// className={inter.className}
  
 export const metadata = {
   charset: 'utf-8',
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-        <body className={inter.className}>{children}<ToastContainer /></body>
+        <body>{children}<ToastContainer /></body>
     </html>
   );
 }

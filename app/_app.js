@@ -1,6 +1,9 @@
 // _app.js
 import { useEffect } from 'react';
 
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
+
 import Router from 'next/router';
 import NProgress from 'nprogress';
 
@@ -13,8 +16,14 @@ function MyApp({ Component, pageProps }) {
     NProgress.start();
     NProgress.done();
   }, []);
-  
-  return (<>
+
+  return (
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
     <Component {...pageProps} />
   </>);
 }
