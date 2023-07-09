@@ -2,6 +2,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import DiscordService from "./DiscordService";
+import Button from '../LoadingButton';
 
 import Link from 'next/link';
 
@@ -13,6 +14,12 @@ export const initialFormState = {
   },
   error: {}
 };
+
+const [showLoader, setShowLoader] = useState(false)
+
+const onSubmit = () => {
+  console.log('button clicked');
+}
 
 export default function Page() {
   useEffect(() => {
@@ -108,6 +115,12 @@ export default function Page() {
             <button type="submit" className="btn btn-secondary">
               Send Message
             </button>
+            <Button
+              text="Send Message"
+              onSubmit={onSubmit}
+              loading={showLoader}
+              disabled={showLoader}
+            />
           </form>
         </div>
       </div>

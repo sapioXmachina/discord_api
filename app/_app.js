@@ -1,5 +1,6 @@
 // _app.js
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Button from './LoadingButton';
 
 import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
