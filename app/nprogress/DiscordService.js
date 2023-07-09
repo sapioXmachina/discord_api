@@ -23,11 +23,11 @@ function DiscordService(setFormData) {
       setFormData(initialFormState);
       toast.success('Message sent successfully!');
       toast('Thanks for checking out my app! :)');
-      
       NProgress.done();
       
     } catch (error) {
       toast.error('Oops -- something went wrong! Webhook may no longer be active :(.');
+      NProgress.done();
     }
   };
 
