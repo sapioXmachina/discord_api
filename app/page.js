@@ -1,6 +1,7 @@
 // page
 'use client';
 import { useEffect, useState } from 'react';
+import DiscordService from "./DiscordService";
 
 import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 import Link from 'next/link';
@@ -14,41 +15,50 @@ export default function Page() {
     NProgress.start();
   }, []);
 
-  const [message, setMessage] = useState('');
-  const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
-  const discord = prefix  + message;
+  // const [message, setMessage] = useState('');
+  // const prefix = process.env.NEXT_PUBLIC_API_MSG + ' ';
+  // const discord = prefix  + message;
 
-  let handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      NProgress.start();
+  // let handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     NProgress.start();
 
-      let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
-        body: JSON.stringify({
-          'content': discord,
-        }),
-        headers: {
-          'Content-Type': process.env.NEXT_PUBLIC_API_CONT
-        },
-        method: 'POST',
-      });
+  //     let res = await fetch(process.env.NEXT_PUBLIC_API_SAPIO, {
+  //       body: JSON.stringify({
+  //         'content': discord,
+  //       }),
+  //       headers: {
+  //         'Content-Type': process.env.NEXT_PUBLIC_API_CONT
+  //       },
+  //       method: 'POST',
+  //     });
 
-      NProgress.done();
+  //     NProgress.done();
 
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setMessage('');
-        toast('Message sent successfully!');
-        console.log(discord);
-      } else {
-        setMessage(message);
-        toast('Oops -- something went wrong!');
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+  //     let resJson = await res.json();
+  //     if (res.status === 200) {
+  //       setMessage('');
+  //       toast('Message sent successfully!');
+  //       console.log(discord);
+  //     } else {
+  //       setMessage(message);
+  //       toast('Oops -- something went wrong!');
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  
+  const [formData, setFormData] = useState({
+    data: {
+      message: "",
+    },
+    error: {}
+  });
+  
+  const { send } = DiscordService();
+  
   useEffect(() => {
     NProgress.done();
   }, []);
@@ -104,12 +114,17 @@ export default function Page() {
                 name="message"
                 className="form-control"
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(e) => {
+                  const { name, value } = e.target;
+                  console.log(name, value)
+                }}
+                  
+                // onChange={(e) => setMessage(e.target.value)}
                 aria-describedby="discordHelp"
                 rows="6"
                 cols="32"
                 minLength="1"
-                maxLength="140"
+                maxLength="2"
                 placeholder="Enter a message..."
                 // pattern=""
                 title="Only letters and spaces allowed."
