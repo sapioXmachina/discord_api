@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import './globals.css';
 import 'nprogress/nprogress.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 import 'react-toastify/dist/ReactToastify.css';
 
 // import { Inter } from 'next/font/google';
