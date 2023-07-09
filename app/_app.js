@@ -1,12 +1,9 @@
 // _app.js
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 import Router from 'next/router';
 import NProgress from 'nprogress';
-
-// import 'react-toastify/dist/ReactToastify.css';
-// import { ToastContainer, toast } from 'react-toastify';
 
 Router.events.on('routeChangeStart', NProgress.start());
 Router.events.on('routeChangeError', NProgress.done());
@@ -20,7 +17,6 @@ function MyApp({ Component, pageProps }) {
   
   return (<>
     <Component {...pageProps} />
-    // <ToastContainer />
   </>);
 }
 

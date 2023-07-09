@@ -1,9 +1,11 @@
 // layout.js
 import Head from 'next/head';
-import './globals.css';
-import 'nprogress/nprogress.css';
+// import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
+import 'nprogress/nprogress.css';
+
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 // import { Inter } from 'next/font/google';
 // const inter = Inter({ subsets: ['latin'] });
@@ -23,7 +25,7 @@ export default function RootLayout({ children }) {
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-        <body>{children}</body>
+        <body>{children}<ToastContainer /></body>
     </html>
   );
 }

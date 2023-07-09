@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css'; //styles of bootstrap
 import Link from 'next/link';
 
 import NProgress from 'nprogress';
-// import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 
 export const initialFormState = {
   data: {
@@ -123,7 +121,6 @@ export default function Page() {
               Send Message
             </button>
           </form>
-          <ToastContainer />
         </div>
       </div>
     </div>
