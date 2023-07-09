@@ -5,8 +5,9 @@ import 'nprogress/nprogress.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+// import { Inter } from 'next/font/google';
+// const inter = Inter({ subsets: ['latin'] });
+// className={inter.className}
  
 export const metadata = {
   charset: 'utf-8',
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-        <body className={inter.className}>{children}</body>
+        <body>{children}</body>
     </html>
   );
 }
