@@ -43,7 +43,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-secondary align-items-center text-center justify-between">
+    <div className="vh-100 flex min-h-screen flex-col bg-secondary align-items-center text-center justify-between">
       <nav className="sticky-top w-100 p-2 bg-dark text-center">
         <div className="flex justify-content-center align-items-center">
           <h4 className="text-secondary">
@@ -67,7 +67,7 @@ export default function Page() {
           </Link>
         </div>
       </nav>
-      <div className="vh-100 d-flex justify-content-center align-items-start pt-6">
+      <div className="d-flex justify-content-center align-items-start pt-6">
         <div className="card ps-3 pe-3 pt-2 pb-3 mt-5 bg-dark-subtle">
           <p
             className="fs-1 fw-bold text-left pt-4"
