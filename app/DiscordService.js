@@ -27,7 +27,6 @@ function DiscordService(setFormData) {
       NProgress.done();
       
     } catch (error) {
-      // console.error(error);
       toast.error('Oops -- something went wrong! Webhook may no longer be active :(.');
     }
   };
