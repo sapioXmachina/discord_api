@@ -2,10 +2,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import DiscordService from "./DiscordService";
-
-import Link from 'next/link';
-
 import NProgress from 'nprogress';
+import Link from 'next/link';
 
 export const initialFormState = {
   data: {
