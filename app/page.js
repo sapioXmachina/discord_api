@@ -25,7 +25,7 @@ export default function Page() {
     setFormData({
       data: {
         ...formData.data,
-        message: value,
+        message: value
       },
       error: {}
     });

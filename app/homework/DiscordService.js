@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 function DiscordService(setFormData) {
 
-  const Send = async (data, headers) => {
+  const Send = async (data) => {
     const body = {
       content: data
     };
@@ -18,11 +18,7 @@ function DiscordService(setFormData) {
       
       const data = await axios.post(
         process.env.NEXT_PUBLIC_API_URL,
-        body,
-        headers ({
-          'Content-Type': process.env.NEXT_PUBLIC_API_CONT,
-          'Authorization': process.env.NEXT_PUBLIC_API_AUTH,
-        }),
+        body
       );
       setFormData(initialFormState);
       toast.success('Message sent successfully!');
