@@ -4,7 +4,7 @@ import axios from 'axios';
 import { initialFormState } from "./page.js";
 
 import NProgress from 'nprogress';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function DiscordService(setFormData) {
 
@@ -23,6 +23,7 @@ function DiscordService(setFormData) {
       console.log(data);
       setFormData(initialFormState);
       toast.success('Message sent successfully!');
+      toast('Thanks for checking out my app! :)');
       
       NProgress.done();
       
